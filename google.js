@@ -21,27 +21,31 @@ const clearBackupFolder = function (path) {
 };
 
 const uploadFiles = async (folder, files) => {
-  await googleDriveInstance.useServiceAccountAuth(
-    JSON.parse(process.env.CREDS)
-  );
+  if (!process.env.CREDS) {
+    console.log("No google service account creds has beed provided.");
+  } else {
+    await googleDriveInstance.useServiceAccountAuth(
+      JSON.parse(process.env.CREDS)
+    );
 
-  const createFolderResponse = await googleDriveInstance.createFolder(
-    process.env.ROOT_FOLDER,
-    folder
-  );
+    const createFolderResponse = await googleDriveInstance.createFolder(
+      process.env.ROOT_FOLDER,
+      folder
+    );
 
-  console.log("Uploading to Google Drive");
-  await Promise.all(
-    files.map((file) =>
-      googleDriveInstance.writeFile(
-        file.path,
-        createFolderResponse.id,
-        `${file.name}.json`,
-        "application/json"
+    console.log("Uploading to Google Drive");
+    await Promise.all(
+      files.map((file) =>
+        googleDriveInstance.writeFile(
+          file.path,
+          createFolderResponse.id,
+          `${file.name}.json`,
+          "application/json"
+        )
       )
-    )
-  );
-  console.log("Uploaded");
+    );
+    console.log("Uploaded");
+  }
 
   clearBackupFolder("backup");
 };
