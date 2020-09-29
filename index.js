@@ -5,7 +5,7 @@ const cron = require("node-cron");
 
 const everyDay = process.env.CRON_DATE || "30 2 * * *";
 
-const { startConnection, handleDump } = require("./dump");
+const { startConnection, handleDump } = require("./src/dump");
 
 startConnection(process.env.URL, (err, connection) => {
   if (err) {
@@ -22,6 +22,6 @@ startConnection(process.env.URL, (err, connection) => {
   });
 });
 
-console.log("Running a task each day...");
+console.log("Running dump server for Heroku...");
 
 app.listen(process.env.PORT || 3000);
