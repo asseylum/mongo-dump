@@ -2,4 +2,6 @@
   "name": "mongo-dump",
   "description": "Dump for MongoDB with auto-upload to Google.Drive and cron. Designed for Heroku deployment.",
   "repository": "https://github.com/wiedymi/mongo-dump",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "mongo"]
 }
