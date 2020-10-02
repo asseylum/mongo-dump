@@ -8,3 +8,5 @@ CRON_DATE=* * * * * (default each day)
 URL=mongo connection url
 CREDS=google service account creds
 ```
+
+Share the root folder with service account first.
