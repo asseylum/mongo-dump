@@ -1,0 +1,5 @@
+{
+  "name": "mongo-dump",
+  "description": "Dump for MongoDB with auto-upload to Google.Drive and cron. Designed for Heroku deployment.",
+  "repository": "https://github.com/wiedymi/mongo-dump",
+}
